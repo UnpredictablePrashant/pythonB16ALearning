@@ -26,8 +26,13 @@ class BankAccount:
 
 
 class SavingsAccount(BankAccount):
+
+    def __init__(self, name, accno, balance, rate):
+        super().__init__(name, accno, balance) # inherit from parent constructor
+        self.rate=rate
+
     def addInterest(self):
-        interest = self.getBalance() * 0.06
+        interest = self.getBalance() * self.rate/100
         self.deposit(interest)
         print("Saving interest added")
 
@@ -44,7 +49,7 @@ class SalaryAccount(BankAccount):
         print("Salary interest added")
 
 
-gaurav_acc = SavingsAccount("Gaurav", 101, 50000)
+gaurav_acc = SavingsAccount("Gaurav", 101, 5000000, 8)
 ankur_acc = CurrentAccount("Ankur", 102, 50000)
 sushant_acc = SalaryAccount("Sushant", 103, 50000)
 
